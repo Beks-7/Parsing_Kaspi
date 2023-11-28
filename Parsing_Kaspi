@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 import re
 
 url = "https://kaspi.kz/shop/c/notebooks/"
-driver_path = r"C:\Users\77750\Desktop\chromedriver-win64\chromedriver.exe"
+driver_path = r"C:\your\path\to\chromedriver-win64\chromedriver.exe"
 chrome_options = Options()
 chrome_options.add_argument(f"webdriver.chrome.driver={driver_path}")
 driver = webdriver.Chrome(options=chrome_options)

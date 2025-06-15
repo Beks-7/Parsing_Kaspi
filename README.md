@@ -1,37 +1,90 @@
-# Kaspi Shop Parser
+Kaspi Shop Parser
+This Python script parses product data from Kaspi.kz marketplace with anti-bot protection bypass and dynamic content handling.
 
-This script is designed to parse information about laptops from the Kaspi Shop website.
+Features
+High performance: Parses 500+ products per hour
 
-## Installation
+Bot protection bypass: User-Agent rotation, random delays, headless browsing
 
-1. Install the required dependencies by running:
+Fault tolerance: Request retries and exception handling
 
-    ```bash
-    pip install selenium beautifulsoup4
-    ```
+Structured data: Automatic CSV conversion
 
-2. Download [ChromeDriver](https://sites.google.com/chromium.org/driver/) and specify the path to it in the `driver_path` variable in the code.
+Flexible filtering: Product filtering by specifications (e.g., laptops with 32+ GB RAM)
 
-## Usage
-
-1. Run the script:
-
-    ```bash
-    python kaspi_parser.py
-    ```
-
-2. Enter the URL of the Kaspi Shop page with laptops in the `url` variable.
-
-3. Wait for the parsing process to complete.
-
-4. The results will be saved in the `output.txt` file.
-
-## Dependencies
-
-- Python 3.x
-- Selenium
-- BeautifulSoup4
+Installation
+Clone the repository:
 
 
----
-**Note:** Make sure you have downloaded and installed ChromeDriver, and specified the correct path in the code.
+git clone https://github.com/yourusername/kaspi-parser.git
+cd kaspi-parser
+Install dependencies:
+
+
+pip install -r requirements.txt
+Install ChromeDriver:
+
+Download the latest version from official site
+
+Specify the driver path in the script (line 22 in kaspi_parser.py)
+
+Usage
+Basic execution:
+
+python kaspi_parser.py
+Configuration parameters (modify in code):
+python
+# Main settings
+BASE_URL = "https://kaspi.kz/shop/c/notebooks/"  # Category to parse
+OUTPUT_FILE = "kaspi_notebooks.csv"              # Output filename
+MAX_RETRIES = 3                                  # Connection retries
+DELAY_RANGE = (1, 3)                             # Random delays (seconds)
+
+# Browser settings
+HEADLESS_MODE = True                             # Background mode
+USER_AGENT_ROTATION = True                       # User-Agent rotation
+Advanced options:
+Specification filtering
+Modify the condition in code:
+
+python
+if max_memory and max_memory.isdigit() and int(max_memory) >= 32:
+Parse other categories
+Change BASE_URL to desired category:
+
+python
+BASE_URL = "https://kaspi.kz/shop/c/smartphones/"
+Add proxy support
+Uncomment in code:
+
+python
+# options.add_argument("--proxy-server=ip:port")
+Output Data
+CSV file structure example:
+
+csv
+name,price,link,max_memory,specs
+Apple MacBook Air 13,799990,https://kaspi.kz/shop/p/...,64,"{'Model': 'MacBook Air', 'Memory': '64 GB'}"
+ASUS ROG Strix,599990,https://kaspi.kz/shop/p/...,32,"{'Model': 'ROG Strix', 'Memory': '32 GB'}"
+Important Notes
+Respect robots.txt
+Check parsing permissions for each domain.
+
+Use delays
+Don't reduce DELAY_RANGE values to avoid blocking.
+
+For commercial use:
+
+Implement proxy rotation
+
+Add CAPTCHA solving
+
+Use distributed architecture
+
+Dependencies
+Python 3.x
+
+Selenium
+
+BeautifulSoup4
+

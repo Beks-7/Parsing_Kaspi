@@ -44,6 +44,7 @@ if max_memory and max_memory.replace('.', '').isdigit() and float(max_memory) >=
 csv
 name,price,link,max_memory,specs
 Ноутбук Apple MacBook Air 13,799990,https://kaspi.kz/shop/p/...,64,"{'Модель': 'MacBook Air', 'Память': '64 ГБ'}"
+
 Ноутбук ASUS ROG Strix,599990,https://kaspi.kz/shop/p/...,32,"{'Модель': 'ROG Strix', 'Память': '32 ГБ'}"
 ⚠️ Важные замечания
 Соблюдайте правила сайта Kaspi.kz
